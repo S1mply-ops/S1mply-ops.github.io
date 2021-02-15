@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+
+  <title> Il Mio Robot, ale.exe </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js">
+    < meta charset = "utf-8" / >
+  </script>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    function setup() {
+      createCanvas(2000, 2000);
+    }
+
+    function draw() {
+
+      // sfondo (in questo caso verde-acqua)
+      background(100, 150, 150);
+
+
+
+      // gambe
+      fill(70, 130, 180); // colore
+      rect(mouseX - 145, mouseY + 1055, 150, 250); // gamba sinistra
+      rect(mouseX + 255, mouseY + 1060, 150, 250); // gamba destra
+
+      //testa
+      fill(70, 130, 180, ); // colore
+      square(mouseX, mouseY, 260);
+
+      // antenne
+      line(mouseX + 80, mouseY, mouseX + 30, mouseY - 90); // sinistra
+      line(mouseX + 180, mouseY, mouseX + 230, mouseY - 90); // destra
+
+      //punte antenne
+      fill(70, 130, 180, ); // colore
+      square(mouseX + 30, mouseY - 90, 30); // sinistra
+      square(mouseX + 200, mouseY - 90, 30); // destra
+
+      // corporatura
+      fill(70, 130, 180, ); // colore
+      square(mouseX - 270, mouseY + 260, 800);
+
+      // braccia
+      fill(70, 130, 180, ); // colore
+      rect(mouseX + 530, mouseY + 460, 150, 250); // destro
+      rect(mouseX - 420, mouseY + 460, 150, 250); // sinistro
+
+      // braccia continuo
+      fill(70, 130, 180, ); // colore
+      rect(mouseX + 580, mouseY + 350, 20, 110); // destro
+      rect(mouseX - 340, mouseY + 350, 20, 110); // sinistro
+
+      // mani
+      fill(0, 0, 0); // colore
+      circle(mouseX + 590, mouseY + 350, 55, 110);
+      circle(mouseX - 330, mouseY + 350, 55, 110); // sinistro
+
+      // naso
+      fill(255, 0, 0); // colore
+      circle(mouseX + 130, mouseY + 140, 40);
+
+      // bocca
+      fill(255, 0, 0); // colore
+      rect(mouseX + 60, mouseY + 190, 150, 18);
+
+      // denti
+      fill(192, 192, 192); // colore
+      rect(mouseX + 60, mouseY + 190, 20, 18);
+      rect(mouseX + 91, mouseY + 190, 20, 18);
+      rect(mouseX + 125, mouseY + 190, 20, 18);
+      rect(mouseX + 159, mouseY + 190, 20, 18);
+      rect(mouseX + 190, mouseY + 190, 20, 18);
+
+
+
+      // occhi
+      fill(255, 0, 0); // colore
+      square(mouseX, mouseY + 40, 50); // sinistra
+      square(mouseX + 210, mouseY + 40, 50); // destro
+
+      // pupille
+      fill(0, 0, 0, ); // colore
+      square(mouseX, mouseY + 40, 30); // destra
+      square(mouseX + 210, mouseY + 40, 30); // sinistra
+
+      // testo aggiuntivo
+      textSize(100); // dimensione testo
+      textAlign(RIGHT, CENTER); // allineamento testo
+      textStyle(BOLD); // tipo di testo
+      text("ALE.EXE", mouseX - 440, mouseY - 90);
+
+    }
+  </script>
+</body>
+
+</html>
