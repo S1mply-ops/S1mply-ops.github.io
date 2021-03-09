@@ -3,7 +3,7 @@
 
 <head>
 
-  <title> Il Mio Robot, ale.exe </title>
+  <title> Home Page </title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js">
     < meta charset = "utf-8" / >
   </script>
@@ -20,7 +20,19 @@
   </style>
 </head>
 
+
 <body>
+  <h1>
+    <div style="position:relative; border:solid; margin:65px; color:black; text-align:center;"><mark>Home Page Di fenzo Alessandro Menu </mark> </div>
+  </h1>
+  <h1>
+    <div style="position:relative; margin:65px; text-align:center;">
+      <a href="esercizio menu/menu.html">
+        <p> clicca qui per il menu! </p>
+      </a>
+    </div>
+  </h1>
+
   <script>
     function setup() {
       createCanvas(2000, 2000);
@@ -102,7 +114,7 @@
       textSize(100); // dimensione testo
       textAlign(RIGHT, CENTER); // allineamento testo
       textStyle(BOLD); // tipo di testo
-      text("ALE.EXE", 440, 90);
+      text("ALE.EXE", mouseX - 440, mouseY - 90);
 
     }
   </script>
