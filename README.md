@@ -1,1 +1,2 @@
 # S1mply-ops.github.io
+[![Validate HTML](https://github.com/S1mply-ops/S1mply-ops.github.io/actions/workflows/html-validate.yml/badge.svg)](https://github.com/S1mply-ops/S1mply-ops.github.io/actions/workflows/html-validate.yml)
