@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="it">
+  <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Di Fenzo Alessandro">
+  <meta name="description" content="esercizio sugli angoli">
+  <meta name="subject" content="angoli">
+
+  <title>Esercizio Angolo</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+
+
+
+
+<body>
+    <script>
+function setup() {
+    createCanvas(1000, 2000);
+    angleMode(DEGREES);
+}
+
+function draw() {
+  background(153, 255, 255);
+  textSize(16); //grandezza testo
+
+  text("CERCHI IN SENSO ORARIO",150, 100,);
+  //cerchi in senso orario
+
+
+  //primo cerchio;30°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(200, 200, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(200, 200, 100, 100, 0, 30);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-30°-",188, 265,);
+
+
+
+
+  //secondo cerchio;45°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(400, 200, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(400, 200, 100, 100, 0, 45);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-45°-",390, 265);
+
+
+
+
+  //terzo cerchio;60°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(600, 200, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(600, 200, 100, 100, 0, 60);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-60°-",590, 265);
+
+
+
+
+  //terzo cerchio;90°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(800, 200, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(800, 200, 100, 100, 0, 90);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-90°-",790, 265);
+
+
+
+
+  //quarto cerchio;180°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(200, 400, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(200, 400, 100, 100, 0, 180);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-180°-",185, 465);
+
+
+
+
+  //quinto cerchio;270°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(400, 400, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(400, 400, 100, 100, 0, 270);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-270°-",388, 465);
+
+
+
+
+  //sesto cerchio;360°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(600, 400, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(600, 400, 100, 100, 0, 360);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-360°-",588, 465);
+
+
+
+  //linea di separazione fra i cerchi in senso orario e antiorario
+  line(0, 650, 1000, 650);
+
+
+
+
+  text("CERCHI IN SENSO ANTIORARIO",150, 750,);
+  //cerchi in senso antiorario
+
+
+
+//primo cerchio;30°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(200, 850, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(200, 850, 100, 100, 330, 0);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-30°-",193, 915);
+
+
+
+
+  //secondo cerchio;45°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(400, 850, 100);
+  //parte interna
+  fill(155, 255, 153);
+  arc(400, 850, 100, 100, 315, 0);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-45°-",393, 915);
+
+
+
+
+  //terzo cerchio;60°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(600, 850, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(600, 850, 100, 100, 300, 0);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-60°-",593, 915);
+
+
+
+
+  //terzo cerchio;90°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(800, 850, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(800, 850, 100, 100, 270, 0);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-90°-",793, 915);
+
+
+
+
+  //quarto cerchio;180°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(200, 1050, 100);
+  //parte interna
+  fill(155, 255, 153);
+  arc(200, 1050, 100, 100, 180, 0);
+  //testo gradi
+  fill(0, 0, 0);
+  text("-180°-",190, 1115);
+
+
+
+
+  //quinto cerchio;270°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(400, 1050, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(400, 1050, 100, 100, 90, 0);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-270°-",390, 1115);
+
+
+
+
+  //sesto cerchio;360°
+  //parte esterna
+  fill(255, 255, 0);
+  circle(600, 1050, 100);
+  //parte interna
+  fill(153, 255, 153);
+  arc(600, 1050, 100, 100, 360, 0);
+  //testo gradi
+  fill(32, 32, 32);
+  text("-360°-",590, 1115);
+
+}
+</script>
+</body>
+</html>
