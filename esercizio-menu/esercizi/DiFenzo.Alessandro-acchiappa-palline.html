@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+
+  <title> gioco acchiappa palline </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+  <meta charset="utf-8" />
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>
+    <mark><ins><em>Gioco </em></ins></mark>
+  </h2>
+
+  <script>
+    //array coordinate del primo array (palline cadenti)
+    //coordinata X delle 20 palline
+    let arrayX = [];
+    //coordinata X delle 20 palline
+    let arrayY = [];
+    //coordinate diametro delle 20 palline
+    let diametro = 30;
+
+    //coordinate della racchetta con forma rettangolare
+    Rb = 100 //base del rettangolo
+    Ra = 20 //altezza del rettangolo
+
+    //indice del nostro array
+    let i;
+
+    //punteggio gioco
+    let point = 0; //punteggio
+    let point2 = 0; //palline perse
+
+    //variabile tastiera per il menu
+    let tasto;
+
+
+    //variabile palline bonus      
+    //coordinata X delle palline bonus
+    let cX = []
+    //coordinata Y delle palline bonus
+    let cY = []
+    //coordinate diametro delle palline bonus
+    let diametro2 = 30;
+
+
+    function setup() {
+
+
+      //funzione per lo spawn di palline sullo schermo in maniera casuale dove con un ciclo for e le proprie condizioni riusciamo a
+      //far si che gli array vengano ripetuti
+      for (i = 0; i < 20; i++) {
+        arrayX[i] = Math.random() * 800;
+        arrayY[i] = Math.random() * -2500;
+      }
+
+      //funzione per lo spawn della pallina bonus sullo schermo in maniera casuale 
+      for (i = 0; i < 1; i++) {
+        cX[i] = Math.random() * 800;
+        cY[i] = Math.random() * -20000;
+      }
+
+      createCanvas(800, 600);
+    }
+
+
+
+
+    function draw() {
+      background(0, 0, 0);
+      tasto = key;
+
+      switch (tasto) {
+
+
+        case "r":
+
+          //testo di benvenuto
+          textSize(30);
+          fill(255, 0, 0);
+          text("-benvenuto in questo gioco!-", 200, 30);
+
+
+          //prima regola
+          textSize(20);
+          fill(255, 255, 255);
+          text("1) Un semplice gioco dove dovrai riuscire a prendere tutte le palline ", 5, 120);
+          text("che cadono dall'alto!", 5, 150);
+
+
+          //seconda regola
+          textSize(20);
+          fill(255, 255, 255);
+          text("2) Se riesci a prendere 300 palline vinci!", 5, 200);
+
+
+          //terza regola
+          textSize(20);
+          fill(255, 255, 255);
+          text("3) Se invece ti farai sfuggire 100 palline perdi!", 5, 250);
+
+          //quarta regola
+          textSize(20);
+          fill(255, 255, 255);
+          text("4) Inoltre troverai una pallina bonus d'orata che ti darà 10 punti!", 5, 300);
+
+          //quarta regola
+          textSize(20);
+          fill(255, 255, 255);
+          text("5) Se questa pallina ti sfugge però, perderai 10 punti!", 5, 350);
+
+
+          //buona fortuna
+          textSize(50);
+          fill(255, 255, 255);
+          text("GOOD LUCK!", 230, 500);
+
+
+          //avviso per tornare indietro
+          textSize(20);
+          fill(255, 255, 255);
+          text("press g to start", 650, 580);
+
+          break;
+
+        case "g":
+
+          //funzione svolta per far si che la pallina bonus si possa muovere
+          let incremento = 15;
+          for (i = 0; i < 1; i++) {
+            cY[i] = cY[i] + incremento;
+          }
+
+          //operazioni per lo spawn di palline bonus in maniera casuale sempre utilizzando un ciclo for
+          //per la ripetizione
+          for (i = 0; i < 1; i++) {
+            fill(255, 255, 0);
+            circle(cX[i], cY[i], diametro2);
+          }
+
+          //funzione utilizzata per far si che quando le palline bonus supereranno il bordo inferiore torneranno in cima sempre spawnate in maniera casuale;
+          //qui invece aumentiamo il numero delle palline perse di 10
+          for (i = 0; i < 1; i++) {
+            if (cY[i] > 600 - diametro2 / 2) {
+              cX[i] = Math.random() * 800;
+              cY[i] = Math.random() * -20000;
+              point2 += 10;
+            }
+          }
+
+          //operazioni per far bloccare le palline bonus sulla racchetta.
+          //per fare ciò anche qui utilizziamo un for con la condizione per ripetere il tutto e all'interno due if, il primo utilizzato per fare bloccare
+          //le palline sull'altezza precisa del rettangolo, mentre il secondo if lo utilizziamo per far toccare le palline con la base precisa del rettangolo
+          //inoltre verrà aumentato il puteggio di 10
+          for (i = 0; i < 1; i++) {
+            if (cY[i] >= 525 && cY[i] <= 575) {
+              if (cX[i] < mouseX + 65 && cX[i] > mouseX - 65) {
+                cX[i] = Math.random() * 800;
+                cY[i] = Math.random() * -20000;
+                point += 10;
+              }
+            }
+          }
+
+
+
+          //operazioni per lo spawn di palline in maniera casuale sempre utilizzando un ciclo for
+          //per la ripetizione
+          for (i = 0; i < 20; i++) {
+            fill(255, 255, 255);
+            circle(arrayX[i], arrayY[i], diametro);
+          }
+
+          //funzione utilizzata per far si che quando le palline supereranno il bordo inferiore torneranno in cima sempre spawnate in maniera casuale;
+          //per fare ciò inseriamo un if con la condizione "arrayY > 800 meno il diametro del cerchio diviso 2" e nella condizione vera lo spawn di palline casuali
+          //qui invece aumentiamo il numero delle palline perse
+          for (i = 0; i < 20; i++) {
+            if (arrayY[i] > 600 - diametro / 2) {
+              arrayX[i] = Math.random() * 800;
+              arrayY[i] = Math.random() * -2500;
+              point2++;
+            }
+          }
+
+          //operazioni per far bloccare le palline sulla racchetta.
+          //per fare ciò anche qui utilizziamo un for con la condizione per ripetere il tutto e all'interno due if, il primo utilizzato per fare bloccare
+          //le palline sull'altezza precisa del rettangolo, mentre il secondo if lo utilizziamo per far toccare le palline con la base precisa del rettangolo
+          //inoltre verrà aumentato il puteggio
+          for (i = 0; i < 20; i++) {
+            if (arrayY[i] >= 525 && arrayY[i] <= 575) {
+              if (arrayX[i] < mouseX + 65 && arrayX[i] > mouseX - 65) {
+                arrayX[i] = Math.random() * 800;
+                arrayY[i] = Math.random() * -2500;
+                point++;
+              }
+            }
+          }
+
+
+          //scritte per i vari punteggi
+          textSize(25);
+          text("Point = " + point, 670, 30);
+          textSize(25);
+          text("Palline perse = " + point2, 5, 30);
+
+
+
+          //operazioni per bloccare la racchetta sul bordo di sinistra
+          if (mouseX <= 50) {
+            mouseX = 50;
+          }
+
+          //operazioni per bloccare la racchetta sul bordo di destra
+          if (mouseX >= 750) {
+            mouseX = 750;
+          }
+
+          //operazioni palle in movimento con la variabile
+          let incrementoY = 5;
+          for (i = 0; i < 20; i++) {
+            arrayY[i] = arrayY[i] + incrementoY;
+          }
+
+          // racchetta del mio gioco
+          fill(255, 255, 255);
+          rect(mouseX - 50, 550, Rb, Ra);
+
+          break;
+
+        default:
+          //schermata che uscirà all'inizio del gioco
+          textSize(50);
+          fill(255, 255, 0);
+          text("ACCHIAPPA PALLINE", 155, 80);
+          textSize(30);
+          textStyle(BOLD);
+          fill(255, 255, 255);
+          text("-premi  g  per provare il gioco-", 190, 220);
+          text("-premi  r  per visualizzare le regole-", 150, 300);
+          textSize(20);
+          text("ps: altri comandi diversi da questi porteranno sempre a questa schermata", 50, 550);
+          break;
+
+
+      }
+
+      //vittoria giocatore; il noloop viene utilizzato per bloccare totalmente tutto
+      //faremo un if con la condizione del punteggio maggiore al punteggio che vogliamo dare
+      if (point >= 300) {
+        background(0, 0, 0);
+        fill(255, 0, 0);
+        textSize(50);
+        text("YOU WIN!", 285, 300);
+        noLoop();
+      }
+
+      //perdita giocatore; il noloop viene utilizzato per bloccare totalmente tutto
+      //faremo un if con la condizione delle palline perse maggiore al punteggio che vogliamo dare
+      if (point2 >= 100) {
+        background(0, 0, 0);
+        fill(255, 0, 0);
+        textSize(50);
+        text("GAME OVER", 250, 300);
+        noLoop();
+      }
+
+
+    }
+  </script>
+</body>
+
+</html>
